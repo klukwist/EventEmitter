@@ -1,5 +1,4 @@
 class MyFragment : Fragment() {
-
     private val navigationEventsObserver = NavigationEvent.createObserver { event ->
             when (event) {
                 is PromoNavigation.ShowCategoriesList -> promoViewModel.showCategoriesList()
