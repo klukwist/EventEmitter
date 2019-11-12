@@ -1,0 +1,22 @@
+class MyFragment : Fragment() {
+
+    private val navigationEventsObserver = NavigationEvent.createObserver { event ->
+            when (event) {
+                is PromoNavigation.OpenCategories -> openCategories(
+                    categorySlag = event.categorySlug,
+                    categoryName = event.categoryName,
+                    promoId = event.promoId
+                )
+                is PromoNavigation.ShowCategoriesList -> promoViewModel.showCategoriesList()
+                is PromoNavigation.OpenProduct -> openProduct(event.productSlug)
+                is PromoNavigation.OpenDeeplink -> openDeeplink(event.link)
+                is PromoNavigation.OpenWebView -> openWebView(event.url)
+                is PromoNavigation.PlayVideo -> videoPlayerViewHelper.loadUrl(event.url)
+            }
+        }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+            super.onViewCreated(view, savedInstanceState)
+            myViewModel.navigator.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
+        }
+}
