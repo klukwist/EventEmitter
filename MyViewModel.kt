@@ -4,12 +4,16 @@ class MyViewModel : ViewModel() {
     private var url: String? = null
     private var productId: Int? = null
     private var otherInfo: String? = null
+        
+    fun doOnShowCategoryListClicked(){
+        navigator.newEvent(MyNavigation.ShowCategoryList())
+    }
     
-    fun doOnPlayClick(){
+    fun doOnPlayClicked(){
         navigator.newEvent(MyNavigation.PlayVideo(url))
     }
 
-    fun doOnProductClick(){
+    fun doOnProductClicked(){
         navigator.newEvent(MyNavigation.OpenProduct(productId, otherInfo))
     }
 }
