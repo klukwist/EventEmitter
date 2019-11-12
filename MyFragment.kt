@@ -1,9 +1,9 @@
 class MyFragment : Fragment() {
     private val navigationEventsObserver = NavigationEvent.createObserver { event ->
             when (event) {
-                is PromoNavigation.ShowCategoriesList -> promoViewModel.showCategoriesList()
-                is PromoNavigation.PlayVideo -> videoPlayerView.loadUrl(event.url)
-                is PromoNavigation.OpenProduct -> openProduct(event.productId, event.otherInfo)
+                is MyFragmentNavigation.ShowCategoriesList -> promoViewModel.showCategoriesList()
+                is MyFragmentNavigation.PlayVideo -> videoPlayerView.loadUrl(event.url)
+                is MyFragmentNavigation.OpenProduct -> openProduct(event.productId, event.otherInfo)
             }
         }
 
