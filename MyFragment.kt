@@ -10,9 +10,10 @@ class MyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            myViewModel.navigator.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
-            myViewModelSecond.navigator.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
-            myViewModelThird.navigator.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
+            //Один обзервер на несколько вьюмоделей в рамках одного фрагмента
+            myViewModel.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
+            myViewModelSecond.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
+            myViewModelThird.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
         }
     
     private fun ShowCategoryList(){
