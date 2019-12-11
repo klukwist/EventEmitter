@@ -1,19 +1,19 @@
 class MyViewModel : ViewModel() {
-    val navigator = ViewModelNavigator()
+    val emitter = Events.Enitter()
     
     private var url: String? = null
     private var productId: Int? = null
     private var otherInfo: String? = null
         
     fun doOnShowCategoryListClicked(){
-        navigator.newEvent(MyNavigation.ShowCategoryList())
+        emitter.emitAndExecute(MyNavigation.ShowCategoryList())
     }
     
     fun doOnPlayClicked(){
-        navigator.newEvent(MyNavigation.PlayVideo(url))
+        emitter.emitAndExecuteOnce(MyNavigation.PlayVideo(url))
     }
 
     fun doOnProductClicked(){
-        navigator.newEvent(MyNavigation.OpenProduct(productId, otherInfo))
+        emitter.emitAndExecute(MyNavigation.OpenProduct(productId, otherInfo))
     }
 }
