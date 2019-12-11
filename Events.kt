@@ -13,6 +13,9 @@ class Events private constructor() {
     class EventObserver(private val handlerBlock: (NavigationEvent) -> Unit) : Observer<NavigationEvent> {
         private val executedEvents: HashSet<String> = hashSetOf()
 
+        /** Clear Executed Events */
+        fun clearExecutedEvents() = executedEvents.clear()
+
         override fun onChanged(it: NavigationEvent?) {
             when (it?.type) {
                 Type.EXECUTE_WITHOUT_LIMITS,
@@ -47,6 +50,9 @@ class Events private constructor() {
 
         /** Wait Observer Available and Emit Event for Execution Once */
         fun waitAndExecuteOnce(event: NavigationEvent) = newEvent(event, Type.WAIT_OBSERVER_IF_NEEDED_AND_EXECUTE_ONCE)
+
+        /** Clear Events that are Waiting for Observer */
+        fun clearWaitingEvents() = waitingEvents.clear()
 
         private val waitingEvents: ArrayList<NavigationEvent> = ArrayList()
         private var isActive = false
