@@ -10,6 +10,8 @@ class MyViewModel : ViewModel() {
             productTitle = "Часы Samsung")
         )
     
+    fun doOnNetworkError() = emitter.emitAndExecuteOnce(MyNavigation.ShowNetworkError())
+
     fun doOnSwipeRefresh(){
         emitter.clearWaitingEvents()
         ..//loadData()
