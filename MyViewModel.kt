@@ -1,18 +1,14 @@
 class MyViewModel : ViewModel() {
     val emitter = Events.Enitter()
     
-    private var url: String? = null
-    private var productId: Int? = null
-    private var otherInfo: String? = null
-        
     fun doOnShowCategoryListButtonClicked() = emitter.emitAndExecute(MyNavigation.ShowCategoryList())
     
-    fun doOnPlayClicked() = emitter.emitAndExecuteOnce(MyNavigation.PlayVideo(url))
+    fun doOnPlayClicked() = emitter.waitAndExecuteOnce(MyNavigation.PlayVideo(url = "https://site.com/abc"))
 
-    fun doOnProductClicked() = emitter.emitAndExecute(MyNavigation.OpenProduct(productId, otherInfo))
+    fun doOnProductClicked() = emitter.emitAndExecute(MyNavigation.OpenProduct(productId = "123", productTitle = "Часы Sumsung"))
     
     fun doOnSwipeRefresh(){
-        emitter.emitAndExecute(MyNavigation.OpenProduct(productId, otherInfo))
+        emitter.clearWaitingEvents()
         ..//loadData()
     }
 }
