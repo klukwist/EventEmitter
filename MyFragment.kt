@@ -1,7 +1,7 @@
 class MyFragment : Fragment() {
-    private val navigationEventsObserver = NavigationEvent.createObserver { event ->
+    private val navigationEventsObserver = Events.EventObserver { event ->
             when (event) {
-                is MyFragmentNavigation.ShowCategoriesList -> promoViewModel.showCategoriesList()
+                is MyFragmentNavigation.ShowCameraPermission -> showCameraPermission()
                 is MyFragmentNavigation.PlayVideo -> videoPlayerView.loadUrl(event.url)
                 is MyFragmentNavigation.OpenProduct -> openProduct(event.productId, event.otherInfo)
             }
@@ -11,4 +11,12 @@ class MyFragment : Fragment() {
             super.onViewCreated(view, savedInstanceState)
             myViewModel.navigator.emitter.observe(viewLifecycleOwner, navigationEventsObserver)
         }
+    
+    private fun showCameraPermission(){
+        ...
+    }
+    
+    private fun openProduct(id: String, name: String){
+        ...
+    }
 }
