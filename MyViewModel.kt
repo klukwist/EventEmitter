@@ -5,7 +5,10 @@ class MyViewModel : ViewModel() {
     
     fun doOnPlayClicked() = emitter.waitAndExecuteOnce(MyNavigation.PlayVideo(url = "https://site.com/abc"))
 
-    fun doOnProductClicked() = emitter.emitAndExecute(MyNavigation.OpenProduct(productId = "123", productTitle = "Часы Sumsung"))
+    fun doOnProductClicked() = emitter.emitAndExecute(MyNavigation.OpenProduct(
+            productId = "123", 
+            productTitle = "Часы Sumsung")
+        )
     
     fun doOnSwipeRefresh(){
         emitter.clearWaitingEvents()
