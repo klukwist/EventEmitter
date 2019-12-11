@@ -8,4 +8,5 @@ interface MyFragmentNavigation {
     class ShowCategoryList : NavigationEvent()
     class OpenProduct(val productId: String, val productName: String) : NavigationEvent()
     class PlayVideo(val url: String) : NavigationEvent()
+    class ShowNetworkError : NavigationEvent()
 }
