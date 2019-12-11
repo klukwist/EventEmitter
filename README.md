@@ -1,1 +1,1 @@
-# ViewModelNavigator
+# ViewModel.emitter -> NavigationEvent -> fragment.observer
