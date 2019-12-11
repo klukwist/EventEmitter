@@ -7,7 +7,7 @@ class MyViewModel : ViewModel() {
 
     fun doOnProductClicked() = emitter.emitAndExecute(MyNavigation.OpenProduct(
             productId = "123", 
-            productTitle = "Часы Sumsung")
+            productTitle = "Часы Samsung")
         )
     
     fun doOnSwipeRefresh(){
