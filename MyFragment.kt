@@ -4,6 +4,7 @@ class MyFragment : Fragment() {
                 is MyFragmentNavigation.ShowCategoryList -> ShowCategoryList()
                 is MyFragmentNavigation.PlayVideo -> videoPlayerView.loadUrl(event.url)
                 is MyFragmentNavigation.OpenProduct -> openProduct(id = event.productId, name = event.otherInfo)
+                is MyFragmentNavigation.ShowNetworkError -> showNetworkErrorAlert()
             }
         }
 
@@ -19,6 +20,10 @@ class MyFragment : Fragment() {
     }
     
     private fun openProduct(id: String, name: String){
+        ...
+    }
+    
+    private fun showNetworkErrorAlert(){
         ...
     }
 }
