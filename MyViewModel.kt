@@ -5,15 +5,14 @@ class MyViewModel : ViewModel() {
     private var productId: Int? = null
     private var otherInfo: String? = null
         
-    fun doOnShowCategoryListClicked(){
-        emitter.emitAndExecute(MyNavigation.ShowCategoryList())
-    }
+    fun doOnShowCategoryListButtonClicked() = emitter.emitAndExecute(MyNavigation.ShowCategoryList())
     
-    fun doOnPlayClicked(){
-        emitter.emitAndExecuteOnce(MyNavigation.PlayVideo(url))
-    }
+    fun doOnPlayClicked() = emitter.emitAndExecuteOnce(MyNavigation.PlayVideo(url))
 
-    fun doOnProductClicked(){
+    fun doOnProductClicked() = emitter.emitAndExecute(MyNavigation.OpenProduct(productId, otherInfo))
+    
+    fun doOnSwipeRefresh(){
         emitter.emitAndExecute(MyNavigation.OpenProduct(productId, otherInfo))
+        ..//loadData()
     }
 }
