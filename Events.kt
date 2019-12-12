@@ -20,8 +20,10 @@ class Events private constructor() {
             when (it?.type) {
                 Type.EXECUTE_WITHOUT_LIMITS,
                 Type.WAIT_OBSERVER_IF_NEEDED -> {
-                    if (!it.isHandled) it.apply(handlerBlock)
-                    it.isHandled = true
+                    if (!it.isHandled) {
+                        it.isHandled = true
+                        it.apply(handlerBlock)
+                    }
                 }
                 Type.EXECUTE_ONCE,
                 Type.WAIT_OBSERVER_IF_NEEDED_AND_EXECUTE_ONCE -> {
